@@ -19,6 +19,8 @@ Plug 'rhysd/vim-clang-format'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/tagbar'
+Plug 'tpope/vim-obsession'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
@@ -70,6 +72,14 @@ nmap <leader>f :<C-u>ClangFormat<CR>
 nmap <leader>rn :<Plug>(coc-rename)
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-p> :TmuxNavigatePrevious<cr>
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
