@@ -64,7 +64,7 @@ set norunexec
 
 " Selected color scheme
 
-colorscheme Default
+colorscheme gruvbox
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -464,7 +464,6 @@ nnoremap <f8> :delete<cr>
 " Use ag (the silver searcher) instead of grep
 "
 set grepprg='rg --line-number %i %a %s'
-set findprg='fd'
 
 " Add additional place to look for executables
 "
@@ -489,4 +488,12 @@ command! FZFfind : set noquickview
                 \|     execute 'goto' fnameescape($FZF_PICK)
                 \| endif
 
-nnoremap <c-f> :FZFfind<cr>
+nnoremap ff :FZFfind<cr>
+nnoremap tn :tabnew<cr>
+
+nnoremap <silent> <c-h> :if paneisat('left')   | execute '!tmux select-pane -L %i' | else | execute 'wincmd h' | endif<cr>
+nnoremap <silent> <c-j> :if paneisat('bottom') | execute '!tmux select-pane -D %i' | else | execute 'wincmd j' | endif<cr>
+nnoremap <silent> <c-k> :if paneisat('top')    | execute '!tmux select-pane -U %i' | else | execute 'wincmd k' | endif<cr>
+nnoremap <silent> <c-l> :if paneisat('right')  | execute '!tmux select-pane -R %i' | else | execute 'wincmd l' | endif<cr>
+" account for <c-h>/<bs> conflict
+nnoremap <silent> <bs>  :if paneisat('left')   | execute '!tmux select-pane -L %i' | else | execute 'wincmd h' | endif<cr>
